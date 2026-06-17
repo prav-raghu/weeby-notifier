@@ -1,8 +1,10 @@
 import requests
 
 def get_latest_chapter(title):
-    search = requests.get("https://api.mangadex.org/manga", params={"title": title}).json()
-    if not search["data"]:
+    search = requests.get(
+        "https://api.mangadex.org/manga", params={"title": title}, timeout=30
+    ).json()
+    if not search.get("data"):
         return None
 
     manga_id = search["data"][0]["id"]
@@ -11,9 +13,9 @@ def get_latest_chapter(title):
         "translatedLanguage[]": "en",
         "order[chapter]": "desc",
         "limit": 1
-    }).json()
+    }, timeout=30).json()
 
-    if not ch_res["data"]:
+    if not ch_res.get("data"):
         return None
 
     ch = ch_res["data"][0]
@@ -21,5 +23,6 @@ def get_latest_chapter(title):
         "id": ch["id"],
         "title": title,
         "number": ch["attributes"].get("chapter", "?"),
-        "url": f"https://mangadex.org/chapter/{ch['id']}"
+        "url": f"https://mangadex.org/chapter/{ch['id']}",
+        "kind": "manga",
     }

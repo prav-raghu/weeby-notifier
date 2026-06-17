@@ -1,1 +1,38 @@
-{"One Piece": {"id": "19d6f44b-7e1d-43c7-915f-946368da57f6", "title": "One Piece", "number": "1155", "url": "https://mangadex.org/chapter/19d6f44b-7e1d-43c7-915f-946368da57f6"}, "Baki": {"id": "b09cb42e-ff1c-4e0a-a059-30a5fdd9b779", "title": "Baki", "number": "371", "url": "https://mangadex.org/chapter/b09cb42e-ff1c-4e0a-a059-30a5fdd9b779"}, "Dragon Ball Super": {"id": "ecb9e100-727c-4fc1-ae8f-0769756bcaa9", "title": "Dragon Ball Super", "number": "9", "url": "https://mangadex.org/chapter/ecb9e100-727c-4fc1-ae8f-0769756bcaa9"}, "Kengan Omega": {"id": "fe2345b2-f2ce-4073-a6ba-95d9e220f813", "title": "Kengan Omega", "number": "232", "url": "https://mangadex.org/chapter/fe2345b2-f2ce-4073-a6ba-95d9e220f813"}, "Black Clover": {"id": "64ce2229-301d-42a9-8407-09593a976446", "title": "Black Clover", "number": "380", "url": "https://mangadex.org/chapter/64ce2229-301d-42a9-8407-09593a976446"}, "Doctor Stone": {"id": "b92c86ca-23d2-4640-b6ee-5263782786ad", "title": "Doctor Stone", "number": "3", "url": "https://mangadex.org/chapter/b92c86ca-23d2-4640-b6ee-5263782786ad"}}
+{
+  "One Piece": {
+    "id": "19d6f44b-7e1d-43c7-915f-946368da57f6",
+    "title": "One Piece",
+    "number": "1155",
+    "url": "https://mangadex.org/chapter/19d6f44b-7e1d-43c7-915f-946368da57f6"
+  },
+  "Baki": {
+    "id": "b09cb42e-ff1c-4e0a-a059-30a5fdd9b779",
+    "title": "Baki",
+    "number": "371",
+    "url": "https://mangadex.org/chapter/b09cb42e-ff1c-4e0a-a059-30a5fdd9b779"
+  },
+  "Dragon Ball Super": {
+    "id": "ecb9e100-727c-4fc1-ae8f-0769756bcaa9",
+    "title": "Dragon Ball Super",
+    "number": "9",
+    "url": "https://mangadex.org/chapter/ecb9e100-727c-4fc1-ae8f-0769756bcaa9"
+  },
+  "Kengan Omega": {
+    "id": "fe2345b2-f2ce-4073-a6ba-95d9e220f813",
+    "title": "Kengan Omega",
+    "number": "232",
+    "url": "https://mangadex.org/chapter/fe2345b2-f2ce-4073-a6ba-95d9e220f813"
+  },
+  "Black Clover": {
+    "id": "64ce2229-301d-42a9-8407-09593a976446",
+    "title": "Black Clover",
+    "number": "380",
+    "url": "https://mangadex.org/chapter/64ce2229-301d-42a9-8407-09593a976446"
+  },
+  "Doctor Stone": {
+    "id": "b92c86ca-23d2-4640-b6ee-5263782786ad",
+    "title": "Doctor Stone",
+    "number": "3",
+    "url": "https://mangadex.org/chapter/b92c86ca-23d2-4640-b6ee-5263782786ad"
+  }
+}

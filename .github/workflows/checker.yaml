@@ -1,21 +1,34 @@
-name: Manga Chapter Checker
+name: Manga & Anime Release Checker
 on:
   schedule:
     - cron: "0 */6 * * *"  # every 6 hours
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with: python-version: "3.x"
-      - name: Install
-        run: pip install requests
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
       - name: Run checker
         env:
           MAILGUN_DOMAIN: ${{ secrets.MAILGUN_DOMAIN }}
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
-        run: python manga_notifier.py
+        run: python main.py
+      - name: Persist last seen releases
+        run: |
+          if ! git diff --quiet data/last_manga_chapters.json; then
+            git config user.name "manga-notifier-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add data/last_manga_chapters.json
+            git commit -m "chore: update last seen releases [skip ci]"
+            git push
+          fi
