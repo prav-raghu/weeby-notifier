@@ -1,4 +1,5 @@
 import time
+from urllib.parse import quote_plus
 
 import requests
 
@@ -61,11 +62,17 @@ def get_latest_episode(title):
     latest = schedules[0]
     canonical_title = media["title"].get("english") or media["title"].get("romaji") or title
 
+    # AniList doesn't host video, so point "Watch now" at a streaming search
+    # for the title. Keep the AniList page as a secondary info link.
+    watch_url = f"https://www.crunchyroll.com/search?q={quote_plus(canonical_title)}"
+    info_url = media.get("siteUrl") or f"https://anilist.co/anime/{media['id']}"
+
     return {
         # AniList has no per-episode id, so build a stable key from media + episode.
         "id": f"{media['id']}-{latest['episode']}",
         "title": canonical_title,
         "number": latest["episode"],
-        "url": media.get("siteUrl") or f"https://anilist.co/anime/{media['id']}",
+        "url": watch_url,
+        "info_url": info_url,
         "kind": "anime",
     }

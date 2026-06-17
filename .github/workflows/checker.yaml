@@ -1,4 +1,4 @@
-name: Manga & Anime Release Checker
+name: Weeby Notifier Release Checker
 on:
   schedule:
     - cron: "0 */6 * * *"  # every 6 hours
@@ -26,7 +26,7 @@ jobs:
       - name: Persist last seen releases
         run: |
           if ! git diff --quiet data/last_manga_chapters.json; then
-            git config user.name "manga-notifier-bot"
+            git config user.name "weeby-notifier-bot"
             git config user.email "bot@users.noreply.github.com"
             git add data/last_manga_chapters.json
             git commit -m "chore: update last seen releases [skip ci]"

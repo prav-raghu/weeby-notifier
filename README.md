@@ -1,6 +1,6 @@
-# Manga & Anime Release Email Notifier
+# Weeby Notifier
 
-Stay ahead of your favorite manga **and** anime releases — automatically get notified via email whenever a new chapter or episode drops.
+**Weeby Notifier** keeps you ahead of your favorite manga **and** anime releases — it automatically notifies you via email whenever a new chapter or episode drops.
 
 This Python-based project checks for the latest manga chapters of selected titles (like **One Piece**, **Baki**, **Dragon Ball Super**, and **Kengan Omega**) using the [MangaDex API](https://api.mangadex.org), and the latest aired anime episodes (like **Solo Leveling**, **Dandadan**, and **Jujutsu Kaisen**) using the free [AniList GraphQL API](https://anilist.gitbook.io/anilist-apiv2-docs/). When new releases are available, a clean HTML email is sent to your inbox using [Mailgun](https://mailgun.com).
 
@@ -17,7 +17,7 @@ This Python-based project checks for the latest manga chapters of selected title
 ## Project Structure
 
 ```text
-manga-notifier/
+weeby-notifier/
 ├── main.py                   # Main controller (manga + anime)
 ├── requirements.txt          # Pip dependencies
 ├── .env                      # Your Mailgun credentials
@@ -101,12 +101,25 @@ Then open `preview.html` in any browser. (Delete it afterwards — it's just a s
 
 **3. Force a full run as if everything were new (sends a real email).**
 The notifier only emails about releases it hasn't seen before. To re-trigger a
-notification for testing, clear the saved state first:
+notification for testing, clear the saved state first.
+
+On macOS / Linux (bash):
 
 ```bash
 echo "{}" > data/last_manga_chapters.json
 python main.py
 ```
+
+On Windows (PowerShell) — use `Set-Content` so the file is written as UTF-8,
+not UTF-16 (a plain `echo >` produces UTF-16 and will not parse):
+
+```powershell
+Set-Content -Path data/last_manga_chapters.json -Value "{}" -Encoding utf8
+python main.py
+```
+
+(If the state file ever ends up empty or corrupt, the notifier now logs a warning
+and starts fresh instead of crashing.)
 
 With valid `.env` credentials this sends one email containing the current latest
 chapters/episodes. Running `python main.py` again immediately should print

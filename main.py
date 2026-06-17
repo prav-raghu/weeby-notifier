@@ -14,10 +14,15 @@ DATA_FILE = "data/last_manga_chapters.json"
 
 
 def load_data():
-    if os.path.exists(DATA_FILE):
-        with open(DATA_FILE, "r") as f:
+    if not os.path.exists(DATA_FILE):
+        return {}
+    try:
+        with open(DATA_FILE, "r", encoding="utf-8-sig") as f:
             return json.load(f)
-    return {}
+    except (json.JSONDecodeError, ValueError):
+        # Empty or corrupt state file — treat as a fresh start rather than crash.
+        print("⚠️  State file was empty or invalid; starting fresh.")
+        return {}
 
 
 def save_data(data):
@@ -56,7 +61,7 @@ def main():
     updates += check_releases(ANIME_TITLES, get_latest_episode, "anime", last_data, new_data)
 
     if updates:
-        subject = f"New Manga & Anime Release(s)! - {datetime.now().strftime('%d/%m/%y')}"
+        subject = f"Weeby Notifier — New Release(s)! - {datetime.now().strftime('%d/%m/%y')}"
         plain_text = "\n".join(
             f"[{c.get('kind', 'manga').title()}] {c['title']} - "
             f"{'Episode' if c.get('kind') == 'anime' else 'Chapter'} {c['number']}: {c['url']}"
