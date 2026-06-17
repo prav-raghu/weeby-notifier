@@ -1,5 +1,13 @@
 # Weeby Notifier
 
+<p align="left">
+  <img
+    src="https://res.cloudinary.com/dcamhhp29/image/upload/v1781707586/375eca57-12b7-455f-ac35-0cb9a77d5a6e.png"
+    alt="Image"
+    width="250"
+  />
+</p>
+
 **Weeby Notifier** keeps you ahead of your favorite manga **and** anime releases — it automatically notifies you via email whenever a new chapter or episode drops.
 
 This Python-based project checks for the latest manga chapters of selected titles (like **One Piece**, **Baki**, **Dragon Ball Super**, and **Kengan Omega**) using the [MangaDex API](https://api.mangadex.org), and the latest aired anime episodes (like **Solo Leveling**, **Dandadan**, and **Jujutsu Kaisen**) using the free [AniList GraphQL API](https://anilist.gitbook.io/anilist-apiv2-docs/). When new releases are available, a clean HTML email is sent to your inbox using [Mailgun](https://mailgun.com).
